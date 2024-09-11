@@ -23,11 +23,11 @@ app.post("/add", async (req, res) => {
         }
 })
 
-// app.get("/getUser", async (req, res) => {
-//     var user = await userService.GetAll(false);
+app.get("/getusers", async (req, res) => {
+    var user = await userService.GetAll(false);
 
-//     res.json(appointment);
-// })
+    res.json(user);
+})
 
 
 

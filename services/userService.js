@@ -6,7 +6,7 @@ const User = mongoose.model("User", user)
 class UserService {
 
     async GetAll(){
-        return await userList.find();
+        return await User.find();
     }
 
     async Create(email, password){
