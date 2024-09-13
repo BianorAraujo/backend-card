@@ -1,11 +1,11 @@
 const express = require("express")
 const app = express()
+const config = require("./config");
 
 const mongoose = require("mongoose");
 const userService = require("./services/userService");
-//const config = require("./config/index");
 
-mongoose.connect("mongodb+srv://cardAdmin:testeMongoDb@cluster0.nyqam.mongodb.net/card?retryWrites=true&w=majority&appName=Cluster0");
+mongoose.connect(config.mongoDB);
 
 app.get("/", (req, res) => {
     res.send("Hello Word!")
@@ -31,6 +31,6 @@ app.get("/getusers", async (req, res) => {
 
 
 
-app.listen(3002, () => {
-    console.log(`Linten on port 3002...`);
+app.listen(config.port, () => {
+    console.log(`Linten on port ${config.port}...`);
 });
