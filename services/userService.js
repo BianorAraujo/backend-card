@@ -27,7 +27,7 @@ class UserService {
     
     async GetByEmail(email){
         try {
-            var event = await user.findOne({'email': email})
+            var event = await User.findOne({'email': email})
             return event
         } catch (error) {
             console.log(error)

@@ -1,11 +1,14 @@
 const express = require("express")
 const app = express()
-const config = require("./config");
+const config = require("./config")
+PORT = 3002
 
-const mongoose = require("mongoose");
-const userService = require("./services/userService");
+app.use(express.json());
 
-mongoose.connect(config.mongoDB);
+const mongoose = require("mongoose")
+const userService = require("./services/userService")
+
+mongoose.connect(config.mongoDB)
 
 app.get("/", (req, res) => {
     res.send("Hello Word!")
@@ -16,7 +19,6 @@ app.post("/add", async (req, res) => {
 
         if(status){
             res.send("Added!");
-            res.redirect("/");
         }
         else{
             res.send("Ocorreu uma falha!");
@@ -29,8 +31,11 @@ app.get("/getusers", async (req, res) => {
     res.json(user);
 })
 
+app.post("/getbyemail", async (req, res) => {
+    var user = await userService.GetByEmail(req.body.email)
+    res.json(user)
+})
 
-
-app.listen(process.env.PORT, () => {
-    console.log(`Linten on port ${process.env.PORT}...`);
+app.listen(PORT, () => {
+    console.log(`Linten on port ${PORT}...`);
 });

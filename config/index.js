@@ -8,7 +8,6 @@ const checkConfig = (value) => {
 }
 
 const config = {
-    port: checkConfig(process.env.PORT),
     mongoDB: checkConfig(process.env.MONGODB_CONNECT_URI)
 }
 
