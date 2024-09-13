@@ -31,6 +31,6 @@ app.get("/getusers", async (req, res) => {
 
 
 
-app.listen(config.port, () => {
-    console.log(`Linten on port ${config.port}...`);
+app.listen(process.env.PORT, () => {
+    console.log(`Linten on port ${process.env.PORT}...`);
 });
